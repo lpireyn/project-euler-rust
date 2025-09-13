@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::ops::Rem;
+use std::ops::{Mul, Rem};
 
 #[rustfmt::skip]
 const SOLUTIONS: &[fn()] = &[
@@ -9,6 +9,7 @@ const SOLUTIONS: &[fn()] = &[
     unimplemented,
     unimplemented,
     solution5,
+    solution6,
 ];
 
 fn main() {
@@ -63,9 +64,25 @@ fn solution5() {
     assert_eq!(n, 232792560);
 }
 
+fn solution6() {
+    const MAX: u32 = 100;
+    let sum_of_squares = (1..=MAX).map(sqr).sum::<u32>();
+    let square_of_sum = sqr((1..=MAX).sum::<u32>());
+    let diff = square_of_sum as i32 - sum_of_squares as i32;
+    println!("{diff}");
+    assert_eq!(diff, 25164150);
+}
+
 #[allow(unused)]
 fn unimplemented() {
     panic!("Solution not yet implemented");
+}
+
+fn sqr<N>(n: N) -> N::Output
+where
+    N: Mul + Copy,
+{
+    n * n
 }
 
 fn is_multiple<N, D>(n: N, d: D) -> bool
