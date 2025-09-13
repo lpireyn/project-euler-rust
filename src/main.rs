@@ -67,10 +67,10 @@ fn solution5() {
 }
 
 fn solution6() {
-    const MAX: u32 = 100;
-    let sum_of_squares = (1..=MAX).map(sqr).sum::<u32>();
-    let square_of_sum = sqr((1..=MAX).sum::<u32>());
-    let diff = square_of_sum as i32 - sum_of_squares as i32;
+    const MAX: u16 = 100;
+    let sum_of_squares: u32 = (1..=MAX).map(sqr_u16).sum();
+    let square_of_sum: u32 = sqr_u16((1..=MAX).sum());
+    let diff = square_of_sum - sum_of_squares;
     println!("{diff}");
     assert_eq!(diff, 25164150);
 }
@@ -96,11 +96,24 @@ fn unimplemented() {
     panic!("Solution not yet implemented");
 }
 
-fn sqr<N>(n: N) -> N::Output
+fn sqr<N, N2>(n: N) -> N2
 where
-    N: Mul + Copy,
+    N2: From<N> + Mul<Output = N2> + Copy,
 {
-    n * n
+    let n2 = N2::from(n);
+    n2 * n2
+}
+
+fn sqr_u8(n: u8) -> u16 {
+    sqr(n)
+}
+
+fn sqr_u16(n: u16) -> u32 {
+    sqr(n)
+}
+
+fn sqr_u32(n: u32) -> u64 {
+    sqr(n)
 }
 
 fn is_multiple<N, D>(n: N, d: D) -> bool
