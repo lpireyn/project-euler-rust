@@ -6,6 +6,9 @@ use std::ops::Rem;
 const SOLUTIONS: &[fn()] = &[
     solution1,
     solution2,
+    unimplemented,
+    unimplemented,
+    solution5,
 ];
 
 fn main() {
@@ -45,6 +48,19 @@ fn solution2() {
     }
     println!("{sum}");
     assert_eq!(sum, 4613732);
+}
+
+fn solution5() {
+    let ds = &[11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    let mut n = 21u64;
+    loop {
+        if ds.iter().all(|d| is_multiple(n, d)) {
+            break;
+        }
+        n += 1;
+    }
+    println!("{n}");
+    assert_eq!(n, 232792560);
 }
 
 #[allow(unused)]
