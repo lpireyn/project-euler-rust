@@ -1,5 +1,7 @@
 #![allow(dead_code)]
 
+use std::ops::Rem;
+
 #[rustfmt::skip]
 const SOLUTIONS: &[fn()] = &[
     solution1,
@@ -50,14 +52,23 @@ fn unimplemented() {
     panic!("Solution not yet implemented");
 }
 
-fn is_multiple(n: i32, d: i32) -> bool {
-    n % d == 0
+fn is_multiple<N, D>(n: N, d: D) -> bool
+where
+    N: Rem<D, Output = N> + PartialEq + From<u8>,
+{
+    n % d == 0u8.into()
 }
 
-fn is_odd(n: i32) -> bool {
-    !is_multiple(n, 2)
+fn is_odd<N>(n: N) -> bool
+where
+    N: Rem<Output = N> + PartialEq + From<u8>,
+{
+    !is_multiple(n, 2u8.into())
 }
 
-fn is_even(n: i32) -> bool {
-    is_multiple(n, 2)
+fn is_even<N>(n: N) -> bool
+where
+    N: Rem<Output = N> + PartialEq + From<u8>,
+{
+    is_multiple(n, 2u8.into())
 }
