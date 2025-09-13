@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use std::ops::{Mul, Rem};
+use std::ops::{Add, Mul, Rem};
 
 #[rustfmt::skip]
 const SOLUTIONS: &[fn()] = &[
@@ -12,6 +12,7 @@ const SOLUTIONS: &[fn()] = &[
     solution6,
     unimplemented,
     solution8,
+    solution9,
 ];
 
 fn main() {
@@ -91,6 +92,25 @@ fn solution8() {
     assert_eq!(max_product, 23514624000);
 }
 
+fn solution9() {
+    const SUM: u16 = 1000;
+    let mut product = 0u64;
+    'outer: for a in 0u16..(SUM / 3 - 2) {
+        for b in (a + 1)..((SUM - a) / 2 - 1) {
+            debug_assert!(b > a);
+            let c = SUM - a - b;
+            debug_assert!(c > b);
+            debug_assert_eq!(a + b + c, SUM);
+            if is_pythagorean_triplet_u16(a, b, c) {
+                product = a as u64 * b as u64 * c as u64;
+                break 'outer;
+            }
+        }
+    }
+    println!("{product}");
+    assert_eq!(product, 31875000);
+}
+
 #[allow(unused)]
 fn unimplemented() {
     panic!("Solution not yet implemented");
@@ -135,4 +155,25 @@ where
     N: Rem<Output = N> + PartialEq + From<u8>,
 {
     is_multiple(n, 2u8.into())
+}
+
+fn is_pythagorean_triplet<N, N2>(a: N, b: N, c: N) -> bool
+where
+    N2: From<N> + PartialEq + Add<Output = N2> + Mul<Output = N2> + Copy,
+{
+    sqr::<N, N2>(a) + sqr::<N, N2>(b) == sqr::<N, N2>(c)
+}
+
+fn is_pythagorean_triplet_u16(a: u16, b: u16, c: u16) -> bool {
+    is_pythagorean_triplet::<u16, u32>(a, b, c)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_is_pythagorean_triplet() {
+        assert!(is_pythagorean_triplet::<u8, u8>(3, 4, 5));
+    }
 }
