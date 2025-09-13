@@ -1,6 +1,9 @@
+#![allow(dead_code)]
+
 #[rustfmt::skip]
 const SOLUTIONS: &[fn()] = &[
     solution1,
+    solution2,
 ];
 
 fn main() {
@@ -23,6 +26,25 @@ fn solution1() {
     assert_eq!(sum, 233168);
 }
 
+fn solution2() {
+    let mut p2 = 1;
+    let mut p1 = 2;
+    let mut sum = p1;
+    loop {
+        let n = p2 + p1;
+        if n >= 4_000_000 {
+            break;
+        }
+        if is_even(n) {
+            sum += n;
+        }
+        p2 = p1;
+        p1 = n;
+    }
+    println!("{sum}");
+    assert_eq!(sum, 4613732);
+}
+
 #[allow(unused)]
 fn unimplemented() {
     panic!("Solution not yet implemented");
@@ -30,4 +52,12 @@ fn unimplemented() {
 
 fn is_multiple(n: i32, d: i32) -> bool {
     n % d == 0
+}
+
+fn is_odd(n: i32) -> bool {
+    !is_multiple(n, 2)
+}
+
+fn is_even(n: i32) -> bool {
+    is_multiple(n, 2)
 }
