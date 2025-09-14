@@ -96,6 +96,46 @@ fn solution10() -> usize {
     primes.iter().copied().sum::<usize>()
 }
 
+fn solution11() -> u64 {
+    todo!()
+}
+
+fn solution12() -> u64 {
+    todo!()
+}
+
+fn solution13() -> u64 {
+    todo!()
+}
+
+fn solution14() -> u32 {
+    todo!()
+}
+
+fn solution15() -> u64 {
+    todo!()
+}
+
+fn solution16() -> u64 {
+    todo!()
+}
+
+fn solution17() -> u64 {
+    todo!()
+}
+
+fn solution18() -> u64 {
+    todo!()
+}
+
+fn solution19() -> u64 {
+    todo!()
+}
+
+fn solution20() -> u64 {
+    todo!()
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
@@ -148,5 +188,65 @@ mod tests {
     #[test]
     fn solution10() {
         assert_eq!(super::solution10(), 142913828922);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution11() {
+        assert_eq!(super::solution11(), 70600674);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution12() {
+        assert_eq!(super::solution12(), 76576500);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution13() {
+        assert_eq!(super::solution13(), 5537376230);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution14() {
+        assert_eq!(super::solution14(), 837799);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution15() {
+        assert_eq!(super::solution15(), 137846528820);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution16() {
+        assert_eq!(super::solution16(), 1366);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution17() {
+        assert_eq!(super::solution17(), 21124);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution18() {
+        assert_eq!(super::solution18(), 1074);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution19() {
+        assert_eq!(super::solution19(), todo!());
+    }
+
+    #[test]
+    #[ignore]
+    fn solution20() {
+        assert_eq!(super::solution20(), 648);
     }
 }
