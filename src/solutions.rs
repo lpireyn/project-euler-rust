@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 use crate::{
+    collatz::collatz,
     math::{is_even, is_multiple, is_palindromic, is_pythagorean_triplet_u16, sqr_u16},
     primes::primes,
 };
@@ -117,8 +118,17 @@ fn solution13() -> u64 {
     todo!()
 }
 
-fn solution14() -> u32 {
-    todo!()
+fn solution14() -> u64 {
+    let mut winner = 0u64;
+    let mut max_len = 0usize;
+    for n in 1u64..1_000_000 {
+        let len = collatz(n).count();
+        if len > max_len {
+            winner = n;
+            max_len = len;
+        }
+    }
+    winner
 }
 
 fn solution15() -> u64 {
@@ -217,7 +227,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn solution14() {
         assert_eq!(super::solution14(), 837799);
     }
