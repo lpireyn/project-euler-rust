@@ -20,6 +20,10 @@ pub fn sqr_u32(n: u32) -> u64 {
     sqr(n)
 }
 
+pub fn sqr_usize(n: usize) -> usize {
+    sqr(n)
+}
+
 pub fn is_multiple<N, D>(n: N, d: D) -> bool
 where
     N: Rem<D, Output = N> + PartialEq + From<u8>,
