@@ -1,3 +1,4 @@
+pub mod collatz;
 pub mod math;
 pub mod primes;
 pub mod solutions;
