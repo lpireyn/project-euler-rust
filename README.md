@@ -7,11 +7,19 @@ In this spirit, I try to limit my use of external crates and keep this project a
 
 ## Usage
 
+The solutions are implemented as functions with corresponding unit tests.
+
+You can run all tests with:
+
 ``` shell
-cargo --quiet run -- NUMBER
+cargo --quiet test
 ```
 
-where `NUMBER` is the problem number.
+You can run specific tests with:
+
+``` shell
+cargo --quiet test solution42
+```
 
 ## License
 
