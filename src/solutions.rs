@@ -29,6 +29,14 @@ fn solution2() -> u32 {
     sum
 }
 
+fn solution3() -> u64 {
+    todo!()
+}
+
+fn solution4() -> u32 {
+    todo!()
+}
+
 // TODO: Too slow!
 fn solution5() -> u64 {
     let ds = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
@@ -44,6 +52,10 @@ fn solution6() -> u32 {
     let sum_of_squares: u32 = (1..=MAX).map(sqr_u16).sum();
     let square_of_sum: u32 = sqr_u16((1..=MAX).sum());
     square_of_sum - sum_of_squares
+}
+
+fn solution7() -> usize {
+    todo!()
 }
 
 fn solution8() -> u64 {
@@ -97,6 +109,18 @@ mod tests {
     }
 
     #[test]
+    #[ignore]
+    fn solution3() {
+        assert_eq!(super::solution3(), 6857);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution4() {
+        assert_eq!(super::solution4(), 906609);
+    }
+
+    #[test]
     fn solution5() {
         assert_eq!(super::solution5(), 232792560);
     }
@@ -104,6 +128,12 @@ mod tests {
     #[test]
     fn solution6() {
         assert_eq!(super::solution6(), 25164150);
+    }
+
+    #[test]
+    #[ignore]
+    fn solution7() {
+        assert_eq!(super::solution7(), 104743);
     }
 
     #[test]
