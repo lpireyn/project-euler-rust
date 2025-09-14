@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
 use crate::{
-    math::{is_even, is_multiple, is_pythagorean_triplet_u16, sqr_u16},
+    math::{is_even, is_multiple, is_palindromic, is_pythagorean_triplet_u16, sqr_u16},
     primes::primes,
 };
 
@@ -34,7 +34,16 @@ fn solution3() -> u64 {
 }
 
 fn solution4() -> u32 {
-    todo!()
+    let mut max_product = 0u32;
+    for i in 1u32..=999 {
+        for j in 1u32..=999 {
+            let product = i * j;
+            if is_palindromic(product) && product > max_product {
+                max_product = product;
+            }
+        }
+    }
+    max_product
 }
 
 // TODO: Too slow!
@@ -155,7 +164,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn solution4() {
         assert_eq!(super::solution4(), 906609);
     }

@@ -1,5 +1,7 @@
 use std::ops::{Add, Mul, Rem};
 
+use crate::string::is_palindrome;
+
 pub fn sqr<N, N2>(n: N) -> N2
 where
     N2: From<N> + Mul<Output = N2> + Copy,
@@ -56,6 +58,10 @@ pub fn is_pythagorean_triplet_u16(a: u16, b: u16, c: u16) -> bool {
     is_pythagorean_triplet::<u16, u32>(a, b, c)
 }
 
+pub fn is_palindromic(n: impl ToString) -> bool {
+    is_palindrome(n.to_string())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -63,5 +69,11 @@ mod tests {
     #[test]
     fn test_is_pythagorean_triplet() {
         assert!(is_pythagorean_triplet::<u8, u8>(3, 4, 5));
+    }
+
+    #[test]
+    fn test_is_palindromic() {
+        assert!(is_palindromic(9009));
+        assert!(!is_palindromic(9008));
     }
 }
