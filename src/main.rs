@@ -1,6 +1,9 @@
 #![allow(dead_code)]
 
-use project_euler::math::{is_even, is_multiple, is_pythagorean_triplet_u16, sqr_u16};
+use project_euler::{
+    math::{is_even, is_multiple, is_pythagorean_triplet_u16, sqr_u16},
+    primes::primes,
+};
 
 #[rustfmt::skip]
 const SOLUTIONS: &[fn()] = &[
@@ -13,6 +16,7 @@ const SOLUTIONS: &[fn()] = &[
     unimplemented,
     solution8,
     solution9,
+    solution10,
 ];
 
 fn main() {
@@ -109,6 +113,13 @@ fn solution9() {
     }
     println!("{product}");
     assert_eq!(product, 31875000);
+}
+
+fn solution10() {
+    let primes = primes(2_000_000 - 1);
+    let sum = primes.iter().copied().sum::<usize>();
+    println!("{sum}");
+    assert_eq!(sum, 142913828922);
 }
 
 #[allow(unused)]
