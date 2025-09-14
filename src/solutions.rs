@@ -55,7 +55,7 @@ fn solution6() -> u32 {
 }
 
 fn solution7() -> usize {
-    todo!()
+    primes(200_000)[10_001 - 1]
 }
 
 fn solution8() -> u64 {
@@ -131,7 +131,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn solution7() {
         assert_eq!(super::solution7(), 104743);
     }
